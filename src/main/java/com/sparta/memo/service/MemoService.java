@@ -4,14 +4,40 @@ import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
 import com.sparta.memo.repository.MemoRepository;
+import lombok.RequiredArgsConstructor;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+//@Component // 해당 클래스를 bean으로 만듦
+//@RequiredArgsConstructor -> lombok 이용
 public class MemoService {
+
+//    @Autowired -> 필드로 주입
     private final MemoRepository memoRepository;
 
-    public MemoService(MemoRepository memoRepository) {
+//    @Autowired  -> 메소드로 주입
+//    public void setDi(MemoRepository memoRepository){
+//        this.memoRepository = memoRepository;
+//    }
+
+
+
+//    public MemoService(ApplicationContext context){
+//        // 1. "Bean' 이름으로 가져오기
+//        MemoRepository memoRepository = (MemoRepository) context.getBean("memoRepository");
+//
+//        // 2. "Bean" 클래스 형식으로 가져오기
+//        MemoRepository memoRepository = context.getBean(MemoRepository.class);
+//        this.memoRepository = memoRepository;
+//    }
+
+    public MemoService(MemoRepository memoRepository) { // 생성자로 주입
         this.memoRepository = memoRepository;
     }
 
